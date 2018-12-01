@@ -1,0 +1,7 @@
+PWD /Users/keidaiiiyama/Desktop/space_control/report1/latex/preamble
+INPUT /usr/local/texlive/2017/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf-var/web2c/euptex/uplatex.fmt
+INPUT preamble.tex
+OUTPUT preamble.log

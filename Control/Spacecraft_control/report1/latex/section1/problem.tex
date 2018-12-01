@@ -1,0 +1,74 @@
+\documentclass[class=article, crop=false, dvipdfmx, fleqn]{standalone}
+\input{../preamble/preamble}
+\begin{document}
+\section{問題設定及び解法}
+無重力場でのスピン衛星の姿勢運動をコンピュータでシミュレートする. シミュレーションのソースコードは
+付録にまとめた.
+
+\subsection{条件}
+条件は以下のように設定する
+\begin{enumerate}
+  \item 姿勢表現はQuartanionを用いることとし, 初期条件は $\bm{q} = {(1, 0, 0, 0)}^{\mathrm{T}}$とする.
+  \item x,y,z軸はprinciple axisに一致しているとする. $I_x, I_y, I_z$をそれぞれ$1.9,1.6,2.0 [kgm^2]$とする.
+  \item y軸周りにノミナルの角速度$\omega_s$ (=17rpm)のスピン角速度があるとする.
+  \item 外乱トルク, 制御トルクをそれぞれ$\bm{M_D},\bm{M_C}$とする. 今回のシミュレーションではそれらを0とおく.
+  \item Gravity Gradeint その他の外乱トルクは考えず, 重力の影響やエネルギー散逸もないとする.
+  \item $\bm{\omega^b}$の初期値は${(0.1,\omega_s +0.1, 0.0)}^{\mathrm{T}}$とする.
+\end{enumerate}
+
+\subsection{解くべき方程式}
+オイラーの運動方程式は,x,y,zを慣性主軸に取れば,
+\begin{equation}
+  \bm{M_D} + \bm{M_C}
+  =
+  \begin{bmatrix}
+    I_x\dot{\omega_x} - (I_y - I_z)\omega_y \omega_z \\
+    I_y\dot{\omega_y} - (I_z - I_x)\omega_z \omega_x \\
+    I_z\dot{\omega_z} - (I_x - I_y)\omega_x \omega_y
+  \end{bmatrix}
+\end{equation}
+今回は, $\bm{M_D} = \bm{M_C} = 0$であるから, ${\bm{\omega^b}}$について解くべき方程式は,
+\begin{equation}
+  \dot{\bm{\omega^b}} = \frac{d}{dt}
+  \begin{bmatrix}
+    \omega_x \\
+    \omega_y \\
+    \omega_z
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \displaystyle \frac{I_y - I_z}{I_x} \omega_y \omega_z \\
+    \displaystyle \frac{I_z - I_x}{I_y} \omega_z \omega_x \\
+    \displaystyle \frac{I_x - I_y}{I_z} \omega_x \omega_y
+  \end{bmatrix}
+\end{equation}
+となる. よって, Quartanion $\bm{q}$について解くべき方程式は,
+\begin{equation}
+  \dot{\bm{q}} = \frac{d}{dt}
+  \begin{bmatrix}
+    q_0 \\
+    q_1 \\
+    q_2 \\
+    q_3 \\
+  \end{bmatrix}
+  = \frac{1}{2}
+  \begin{bmatrix}
+    -q_1 & -q_2 & -q_3 \\
+    q_0 & -q_3 & q_2 \\
+    q_3 & q_0 & -q_1 \\
+    -q_2 & q_1 & q_0
+  \end{bmatrix}
+  \begin{bmatrix}
+    \omega_x \\
+    \omega_y \\
+    \omega_z
+  \end{bmatrix}
+\end{equation}
+
+\subsubsection{数値解法}
+式2と式3を4次のルンゲクッタ法で数値積分することにより,
+$\bm{\omega^b}$,$\bm{q}$の時間変化を求める.
+
+
+
+\end{document}

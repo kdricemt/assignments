@@ -1,0 +1,64 @@
+\documentclass[class=article, crop=false, dvipdfmx, fleqn]{standalone}
+\input{../preamble/preamble}
+\begin{document}
+\section{考察}
+カルマンフィルターの中核をなすパラメータである, カルマンゲインについて考察する.
+カルマンゲイン$\bm{K_k}$は, 第2節でも触れたように観測値とシステム推定値$\bm{\overline{x_k}}$から予測される
+観測値との偏差$\bm{(z_k- H_k\overline{x_k})}$を踏まえて,
+\begin{equation}
+  \hat{x_k} = \overline{x_k} +\bm{K_k(z_k- H_k\overline{x_k})}
+\end{equation}
+で推定値の更新を行うためのゲインであり,
+\begin{equation}
+  \bm{K_k} = \bm{P_k H^T R_k^{-1}}
+\end{equation}
+で与えられる. ここで, $\bm{P_k}$は観測後の推定っs誤差の共分散, $\bm{H^T}$は観測方程式
+\begin{equation}
+  \bm{z(t)} = \bm{Hx(t)} + \bm{v_k}
+\end{equation}
+で登場するOutput Matrix, $\bm{R_k}$は測定誤差であった. このカルマンゲインは最尤推定の理論
+を用いて数式的に導き出すことができたが, ここではカルマンゲインの定義式自体から,
+カルマンゲイン自体が何を指し示しているのか考えてみることにする. \\
+定義式を変形していくことを考える.
+\begin{align}
+  \bm{K_k} &= \bm{P_k H^T R_k^{-1}} \nonumber \\
+           &= \bm{{(M_k^{-1}+{H_k}^{T}{R_k}^{-1}H_k)}^{-1}{H_k}^T{R_k}^{-1}}\nonumber \\
+           &= \bm{{M_kH_k^{T}}{(R_k + H_kM_k{H_k}^T)}^{-1}}
+\end{align}
+ここで、$\bm{M_k}$は観測前の推定誤差の共分散である. ここで, わかりやすく極限を考えると
+\begin{align}
+  \lim_{\bm{R_k} \to 0} \bm{{M_kH_k^{T}}{(R_k + H_kM_k{H_k}^T)}^{-1}} &= {\bm{H_k}}^{-1} \\
+  \lim_{\bm{M_k} \to 0} \bm{{M_kH_k^{T}}{(R_k + H_kM_k{H_k}^T)}^{-1}} &= 0 \\
+\end{align}
+であるから,観測前のシステム推定値の誤差が大きいほどカルマンゲインは小さくなり, 逆に観測ノイズが
+小さいほどカルマンゲインは大きくなることが分かる. すなわち,カルマンゲインはどれほど観測値を
+システム推定値との比較において信用するかという指標になっていると言える. これを踏まえ, 今回のモデル
+において,観測誤差と外乱トルクの誤差の大きさを変化させてカルマンゲインの変化をみるシミュレーションを行った.
+まず,最初に提示された初期条件(観測ノイズ$\bm{v}, \sigma_v = 0.01$, 外乱トルク$\bm{w}, \sigma_w = 0.01$)
+におけるカルマンゲインの変化は次の図のようになった. フィルターが働き真値に収束していくにつれて,
+カルマンゲインのノルムが小さくなっていってることが分かる.
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=8cm]{../../../fig/R2kmatrix1.png}
+  \caption{$\bm{v}, \sigma_v = 0.01$,$\bm{w}, \sigma_w = 0.01$の際のカルマンゲインノルム}
+\end{center}
+\end{figure}
+
+これに対し, $(\sigma_v = 0.02, \sigma_w = 0.02), (\sigma_v = 0.03, \sigma_w = 0.01),
+(\sigma_v = 0.01, \sigma_w = 0.03)$としたものについて比較を行ったところ,
+以下のようになった.
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=12cm]{../../../fig/R2kmatrix_compare.png}
+  \caption{$\sigma_v,\sigma_w$を変化させた際のカルマンゲインノルム}
+\end{center}
+\end{figure}
+
+観測ノイズ$\bm{v}, \sigma_v$を大きくするとカルマンゲインが小さくなり, 逆に外乱トルク$\bm{w}, \sigma_w$
+を大きくするとシステム推定値の誤差が大きくなり, カルマンゲインが大きくなる. \\
+またいずれの場合も, 冒頭に非常にカルマンゲインのノルムが大きくなるフェーズがあるが, これは初期誤差($\bm{P}$
+の初期値)の関係でシステム推定値の誤差が冒頭大きくなってしまっていることが原因であると考えられる.
+これは第3章で並べた$\sqrt{P_{ii}}$の時間履歴において, 冒頭の変化が非常に大きくなっていることからも読み取れる.
+
+\end{document}

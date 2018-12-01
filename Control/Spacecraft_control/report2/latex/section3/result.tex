@@ -1,0 +1,137 @@
+\documentclass[class=article, crop=false, dvipdfmx, fleqn]{standalone}
+\input{../preamble/preamble}
+\begin{document}
+\section{結果}
+Pの初期条件は,
+\begin{equation}
+  \bm{P} = \begin{bmatrix}
+  \sigma_v & 0 & 0 & 0 & 0 & 0 & 0 \\
+  0 & \sigma_v & 0 & 0 & 0 & 0 & 0 \\
+  0 & 0 & \sigma_v & 0 & 0 & 0 & 0 \\
+  0 & 0 & 0 & \sigma_v & 0 & 0 & 0 \\
+  0 & 0 & 0 & 0 & \sigma_w & 0 & 0 \\
+  0 & 0 & 0 & 0 & 0 & \sigma_w & 0 \\
+  0 & 0 & 0 & 0 & 0 & 0 & \sigma_w
+\end{bmatrix}
+\end{equation}
+とした.結果は以下のようになった.
+
+\begin{figure}[H]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2qt0v1.png}
+  \end{center}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2qt1v1.png}
+  \end{center}
+ \end{minipage}
+\end{figure}
+
+\vspace{-1cm}
+
+\begin{figure}[H]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2pmatrix0v1.png}
+  \end{center}
+  %\caption{qt0}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2pmatrix0v1.png}
+  \end{center}
+  %\caption{qt1}
+ \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2qt2v1.png}
+  \end{center}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2qt3v1.png}
+  \end{center}
+ \end{minipage}
+\end{figure}
+
+\vspace{-1cm}
+
+\begin{figure}[H]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2pmatrix2v1.png}
+  \end{center}
+  %\caption{qt2}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2pmatrix3v1.png}
+  \end{center}
+  %\caption{qt3}
+ \end{minipage}
+\end{figure}
+
+\vspace{2cm}
+
+\begin{figure}[H]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2omega1v1.png}
+  \end{center}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2omega2v1.png}
+  \end{center}
+ \end{minipage}
+\end{figure}
+
+\vspace{-1cm}
+
+\begin{figure}[H]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2pmatrix4v1.png}
+  \end{center}
+  %\caption{$\omega_x$}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2pmatrix5v1.png}
+  \end{center}
+  %\caption{$\omega_y$}
+ \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2omega3v1.png}
+  \end{center}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+ \end{minipage}
+\end{figure}
+
+\vspace{-1cm}
+
+\begin{figure}[H]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[width=65mm]{../../../fig/R2pmatrix6v1.png}
+  \end{center}
+  %\caption{$\omega_z$}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+ \end{minipage}
+\end{figure}
+
+推定値が真値に漸近し,また真値とのずれ$\Delta x$も$\sqrt{P_{ii}}$が減少するに従って,
+減少していっていることが分かる.
+
+\end{document}

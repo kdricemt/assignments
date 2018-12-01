@@ -1,0 +1,93 @@
+\title{航空機設計法第一 \\
+レポート課題3 \ 機体三面図(初期案)}
+\author{学籍番号 03-170313 飯山　敬大\\
+        }
+\date{\today}
+
+% packages and libraries
+\usepackage[utf8]{inputenc}				%fonts
+\usepackage[ipaex]{pxchfon}
+\usepackage{pifont}
+\usepackage{mathtools, amssymb, mathrsfs, bbm,nccmath}	%math
+\usepackage{siunitx, physics}
+\usepackage[table]{xcolor}				%colors
+\usepackage{tabularx}
+\usepackage[dvipdfmx]{graphicx}					%figures
+\usepackage{subcaption, wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{calc, patterns, decorations, angles, calendar, backgrounds, shadows, mindmap}
+\usepackage{tcolorbox}					%tables
+\usepackage{longtable, float, multirow, array, listliketab, enumitem, tabularx}
+\usepackage{listings,plistings}					%listings
+\usepackage{comment}
+\usepackage{hyperref}					%URL, link
+\usepackage{url}
+\usepackage{pxjahyper}
+\usepackage{overcite}					%setting of citation
+\usepackage{pxrubrica}					%rubi
+\usepackage{fancyhdr, lastpage}			%pagelayout
+\usepackage{import, grffile}			%file management
+\usepackage{standalone}
+\usepackage{bm}
+\usepackage{empheq}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage{dirtree}
+% set up for siunitx
+\sisetup{%
+	%detect-family = true,
+	detect-inline-family = math,
+	detect-weight = true,
+	detect-inline-weight = math,
+    %input-product = *,
+    quotient-mode = fraction,
+	fraction-function = \frac,
+	inter-unit-product = \ensuremath{\hspace{-1.5pt}\cdot\hspace{-1.5pt}},
+	per-mode = symbol,
+	product-units = single,
+	}
+
+% setting of line skip
+\setlength{\lineskiplimit}{6pt}
+\setlength{\lineskip}{6pt}
+
+% setting of indent
+\setlength{\parindent}{1zw}
+\setlength{\mathindent}{5zw}
+
+% change cite form
+\renewcommand{\citeform}[1]{[#1]}
+
+% number equations only when they are referred to in the text
+%\mathtoolsset{showonlyrefs=true}
+%\graphicspath{{images/}{../images/}}
+
+% set up for hyperref
+\hypersetup{%
+	bookmarksnumbered = true,%
+	hidelinks,%
+	colorlinks = true,%
+	linkcolor = black,%
+	urlcolor = cyan,%
+	citecolor = black,%
+	filecolor = magenta,%
+	setpagesize = false,%
+	}
+
+\pdfstringdefDisableCommands{%
+\renewcommand*{\bm}[1]{#1}%
+% any other necessary redefinitions
+}
+% Include \subsubsection in ToC
+\setcounter{tocdepth}{3}
+
+% tabularx
+\newcolumntype{C}{>{\centering\arraybackslash}X} %セル内で中央揃え
+\newcolumntype{R}{>{\raggedright\arraybackslash}X} %セル内で右揃え
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
+
+%macro
+\newcommand{\fracomega}[1]{\displaystyle \frac{1}{2} \omega_{#1}}
+\newcommand{\fracq}[1]{\displaystyle \frac{1}{2} q_{#1}}
+\newcommand{\fracI}[3]{\displaystyle \frac{I_{#1}-I_{#2}}{I_{#3}} \omega_{I_{#1}}}

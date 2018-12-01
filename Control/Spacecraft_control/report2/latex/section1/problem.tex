@@ -1,0 +1,225 @@
+\documentclass[class=article, crop=false, dvipdfmx, fleqn]{standalone}
+\input{../preamble/preamble}
+\begin{document}
+\section{問題設定}
+無重力場でのスピン衛星の姿勢運動を推定するカルマンフィルタを作成する. シミュレーションのソースコードは
+付録にまとめた.
+
+\subsection{条件}
+条件は以下のように設定する.
+\begin{enumerate}
+  \item 対象の慣性モーメント及び運動の様子は課題1と同様に設定する.
+  \item 観測量としてDCMの3つの列ベクトルがランダムに与えられるとする. その観測ノイズは平均値0,
+  標準偏差0.01の正規白色雑音とする.
+  \item 外乱トルクとして, 平均値0, 標準偏差0.01の正規白色雑音が各軸に入るとする.
+\end{enumerate}
+
+\subsection{解くべき方程式}
+オイラーの運動方程式は,x,y,zを慣性主軸に取れば, $\bm{M_C}=0$であるから,$\bm{w}$を外乱トルクベクトル
+として
+\begin{equation}
+  \bm{M_D} = \bm{w}
+  =
+  \begin{bmatrix}
+    w_x \\
+    w_y \\
+    w_z \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    I_x\dot{\omega_x} - (I_y - I_z)\omega_y \omega_z \\
+    I_y\dot{\omega_y} - (I_z - I_x)\omega_z \omega_x \\
+    I_z\dot{\omega_z} - (I_x - I_y)\omega_x \omega_y
+  \end{bmatrix}
+\end{equation}
+また外乱ベクトル$\bm{w}$については, 条件3より, 共分散を$\bm{Q}$として,
+\begin{align}
+   & E(\bm{w}) = 0 \\
+   & E[\bm{w}{\bm{w}}^{\mathrm{T}}] = Q
+\end{align}
+が成り立つ.ただし,
+\begin{equation}
+   Q =
+  \begin{bmatrix}
+    {\sigma_w}^2 & 0 & 0 \\
+    0 & {\sigma_w}^2 & 0 \\
+    0 & 0 & {\sigma_w}^2
+  \end{bmatrix}
+  ,  {\sigma_w} = 0.01[Nm]
+\end{equation}
+またQuartanion $\bm{q}$については,
+\begin{equation}
+  \dot{\bm{q}} = \frac{d}{dt}
+  \begin{bmatrix}
+    q_0 \\
+    q_1 \\
+    q_2 \\
+    q_3 \\
+  \end{bmatrix}
+  = \frac{1}{2}
+  \begin{bmatrix}
+    -q_1 & -q_2 & -q_3 \\
+    q_0 & -q_3 & q_2 \\
+    q_3 & q_0 & -q_1 \\
+    -q_2 & q_1 & q_0
+  \end{bmatrix}
+  \begin{bmatrix}
+    \omega_x \\
+    \omega_y \\
+    \omega_z
+  \end{bmatrix}
+\end{equation}
+
+これらをまとめると$\bm{q}$及び$\bm{\omega}$についての関係式は,
+\begin{equation}
+  \frac{d}{dt}
+  \begin{bmatrix}
+    q_0 \\
+    q_1 \\
+    q_2 \\
+    q_3 \\
+    \omega_x \\
+    \omega_y \\
+    \omega_z
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \frac{1}{2}
+    \begin{bmatrix}
+      -q_1 & -q_2 & -q_3 \\
+      q_0 & -q_3 & q_2 \\
+      q_3 & q_0 & -q_1 \\
+      -q_2 & q_1 & q_0
+    \end{bmatrix}
+    \begin{bmatrix}
+      \omega_x \\
+      \omega_y \\
+      \omega_z
+    \end{bmatrix} \\
+    \displaystyle \frac{I_y - I_z}{I_x}\omega_y\omega_z + \displaystyle \frac{w_x}{I_x} \\
+    \displaystyle \frac{I_z - I_x}{I_y}\omega_z\omega_x + \displaystyle \frac{w_y}{I_y} \\
+    \displaystyle \frac{I_x - I_y}{I_z}\omega_x\omega_y + \displaystyle \frac{w_z}{I_z}
+  \end{bmatrix}
+\end{equation}
+ここで, この関係式を線形化することを考える. 式6で
+$\bm{q} \to \bm{q} + \bm{\Delta q}, \bm{\omega} \to \bm{\omega} + \bm{\Delta \omega}$
+とした式を式6から引き, 2次以上の微小項を無視することで,
+Quartanionと角速度の真値からのずれ $\bm{\Delta q}, \bm{\Delta \omega}$に関する微分方程式を得る
+ことができる.
+さらに, 系の状態量 $\bm{x}$を
+\begin{equation}
+  \bm{x} =
+  \begin{bmatrix}
+    \Delta \bm{q} \\
+    \Delta \bm{\omega}
+  \end{bmatrix}
+\end{equation}
+とおけば, 状態方程式は
+\begin{equation}
+  \dot{\bm{x}} = \bm{A}\bm{x} + \bm{B}\bm{w}
+\end{equation}
+と表せる. ただし,
+\begin{equation}
+ \bm{A}
+  =
+  \begin{bmatrix}
+    0 & -\fracomega{x} & -\fracomega{y} & -\fracomega{z} &
+    -\fracq{1} & -\fracq{2} & -\fracq{3} \\[3mm]
+    +\fracomega{x} & 0 & +\fracomega{z} & +\fracomega{y} &
+    +\fracq{0} & -\fracq{3} & +\fracq{2} \\[3mm]
+    +\fracomega{y} & -\fracomega{z} & 0 & +\fracomega{x} &
+    +\fracq{3} & +\fracq{0} & -\fracq{1} \\[3mm]
+    +\fracomega{z} & +\fracomega{y} & -\fracomega{x} & 0 &
+    -\fracq{2} & +\fracq{1} & +\fracq{0} \\[3mm]
+    0 & 0 & 0 & 0 & 0 & \fracI{y}{z}{x} & \fracI{y}{z}{x} \\
+    0 & 0 & 0 & 0 & \fracI{z}{x}{y} & 0 & \fracI{z}{x}{y} \\
+    0 & 0 & 0 & 0 & \fracI{x}{y}{z} & \fracI{x}{y}{z} & 0
+  \end{bmatrix}
+\end{equation}
+\begin{equation}
+  \bm{B} =
+  \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    \displaystyle \frac{1}{I_x} & 0 & 0 \\
+    0 & \displaystyle \frac{1}{I_y} & 0\\
+    0 & 0 & \displaystyle \frac{1}{I_z}\\
+  \end{bmatrix}
+\end{equation}
+である. \\
+次に観測量であるが, DCMの3つの列ベクトルのうち、ランダムに1列が与えられるので, 観測値を
+$\bm{y_1},\bm{y_2},\bm{y_3}$とすると,
+\begin{equation}
+  \begin{cases}
+    \bm{y_1} =
+    \begin{bmatrix}
+      {q_0}^2 + {q_1}^2 - {q_2}^2 - {q_3}^2 \\
+      2(q_1q_2 + q_0q_3) \\
+      2(q_1q_3 + q_0q_2)
+    \end{bmatrix}
+    + \bm{v} \\
+    \bm{y_2} =
+    \begin{bmatrix}
+      2(q_1q_2 - q_0q_3) \\
+      {q_0}^2 - {q_1}^2 + {q_2}^2 - {q_3}^2 \\
+      2(q_2q_3 + q_0q_1)
+    \end{bmatrix}
+    + \bm{v} \\
+    \bm{y_3} =
+    \begin{bmatrix}
+      2(q_1q_3 + q_0q_2) \\
+      2(q_2q_3 - q_0q_1) \\
+      {q_0}^2 - {q_1}^2 - {q_2}^2 + {q_3}^2
+    \end{bmatrix}
+    + \bm{v}
+  \end{cases}
+\end{equation}
+となる.
+観測ノイズベクトル$\bm{v}$については, 条件2より, 共分散を$\bm{R}$として,
+\begin{align}
+   &E(\bm{v}) = 0 \\
+   &E[\bm{v}{\bm{v}}^{\mathrm{T}}] = R
+\end{align}
+が成り立つ.ただし,
+\begin{equation}
+   R =
+  \begin{bmatrix}
+    {\sigma_v}^2 & 0 & 0 \\
+    0 & {\sigma_v}^2 & 0 \\
+    0 & 0 & {\sigma_v}^2
+  \end{bmatrix}
+  ,  {\sigma_v} = 0.01
+\end{equation}
+の分布に従う. これを$\bm{x}$の時と同様に線形化すると, 観測方程式は,
+\begin{equation}
+  \bm{z_i} = \bm{H_i}\bm{x} + \bm{v}, i=1,2,3
+\end{equation}
+となる. ただし, $\bm{z}$は観測されたDCM列ベクトルと, システムが推定する(Quartanionを元にした)
+DCMベクトルの差である. \\
+また$\bm{H}$はどの列ベクトルの観測量が得られたかに基づいて3通りのHがあり,それらは
+\begin{equation}
+  \begin{cases}
+  \bm{H_1} =
+  \begin{bmatrix}
+    2q_0 & 2q_1 & -2q_2 & -2q_3 & 0 & 0 & 0 \\
+    2q_3 & 2q_2 & 2q_1 & 2q_0 & 0 & 0 & 0 \\
+    -2q_2 & 2q_3 & -2q_0 & 2q_1 & 0 & 0 & 0 \\
+  \end{bmatrix} \\
+  \bm{H_2} =
+  \begin{bmatrix}
+    -2q_3 & 2q_2 & 2q_1 & -2q_0 & 0 & 0 & 0 \\
+    2q_0 & -2q_1 & 2q_2 & -2q_3 & 0 & 0 & 0 \\
+    2q_1 & 2q_0 & 2q_3 & 2q_2 & 0 & 0 & 0 \\
+  \end{bmatrix} \\
+  \bm{H_3} =
+  \begin{bmatrix}
+    2q_2 & 2q_3 & 2q_0 & 2q_1 & 0 & 0 & 0 \\
+    -2q_1 & -2q_0 & 2q_3 & 2q_2 & 0 & 0 & 0 \\
+    2q_0 & -2q_1 & -2q_2 & 2q_3 & 0 & 0 & 0 \\
+  \end{bmatrix}
+  \end{cases}
+\end{equation}
+のようになる.
+\end{document}

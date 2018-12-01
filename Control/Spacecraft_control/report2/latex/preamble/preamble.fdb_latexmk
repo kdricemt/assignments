@@ -1,0 +1,14 @@
+# Fdb version 3
+["dvipdf"] 0 "preamble.dvi" "preamble.pdf" "preamble" 0
+  "preamble.dvi" 0 -1 0 "latex"
+  (generated)
+  "preamble.pdf"
+["latex"] 1519936745 "preamble.tex" "preamble.dvi" "preamble" 1519936749
+  "/usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf" 1494087824 32646 eadc4ca26cdbe7105ac7c593aa8c4f72 ""
+  "/usr/local/texlive/2017/texmf-var/web2c/euptex/uplatex.fmt" 1514186411 4337467 f86f669b1450db022e9954cba0ff05b0 ""
+  "/usr/local/texlive/2017/texmf.cnf" 1495593465 577 2b71d4d888f9e5560b2e99985915a9fa ""
+  "preamble.aux" 1514412538 8 a94a2480d3289e625eea47cd1b285758 ""
+  "preamble.tex" 1519936737 2730 e16808d0ffe73d4d5058b3809e0b137a ""
+  (generated)
+  "preamble.dvi"
+  "preamble.log"

@@ -1,0 +1,114 @@
+\documentclass[class=article, crop=false, dvipdfmx, fleqn]{standalone}
+\input{../preamble/preamble}
+\begin{document}
+\section{結果}
+シミュレーション結果は以下の図のようになった.
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=12cm]{../../../fig/R1qt1.png}
+  \caption{qtの時間履歴}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=12cm]{../../../fig/R1omega1.png}
+  \caption{$\omega$の時間履歴}
+\end{center}
+\end{figure}
+
+quartanionでは衛星の向きがわかりにくいので, quartanionをDCMへと変換し,Body frameの各軸の
+変化を慣性座標系でプロットしたところ, 以下の図のようになった.
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=8cm]{../../../fig/R1_xaxis.png}
+  \caption{Body-Frame \ x軸の慣性座標系表示}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=8cm]{../../../fig/R1_yaxis.png}
+  \caption{Body-Frame \ y軸の慣性座標系表示}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=8cm]{../../../fig/R1_zaxis.png}
+  \caption{Body-Frame \ z軸の慣性座標系表示}
+\end{center}
+\end{figure}
+
+以上の図から, 衛星がy軸周りにほぼ一定の角速度で安定して回っていることが読み取れる.
+これは衛星をある軸の周りに回転させてやると, 衛星の姿勢を安定させてやることができることを示唆して
+いる. これについてもう少し踏み込んで考察する. \\
+今, y軸をスピン軸とし, $\omega_y = \omega_s + \epsilon$ で回転しているスピン衛星について
+考える. ただし,
+\begin{equation}
+   \epsilon,|\omega_x|,|\omega_y| << 1
+\end{equation}
+と仮定し, これをEulerの方程式に
+代入すると,
+\begin{align}
+  I_x\dot{\omega_x} &= (I_y - I_z)\omega_s\omega_z \\
+  I_y\dot{\epsilon} &= 0 \\
+  I_z\dot{\omega_z} &= (I_x - I_y)\omega_s\omega_z
+\end{align}
+という線形の運動方程式になる. \\
+これを解くと, y軸の動きは独立しており,
+\begin{equation}
+  \epsilon = const.
+\end{equation}
+となる一方,
+\begin{equation}
+  a = \frac{(I_y - I_z)(I_x - I_y)}{I_z}{\omega_s}^2
+\end{equation}
+とおくと,
+\begin{equation}
+  \begin{cases}
+    \ddot{\omega_x} + a\omega_x = 0 \\
+    \ddot{\omega_z} + a\omega_z = 0
+  \end{cases}
+\end{equation}
+となり, x軸とy軸がカップリングしていることがわかる. またx軸とz軸について, 解が発散しないための
+必要十分条件は,
+\begin{equation}
+  a > 0 \Leftrightarrow I_y > I_x, I_z \ or \ I_y < I_x, I_z
+\end{equation}
+である. 今回シミュレートした衛星は, 条件(4)を満たしているとみなせ,
+\begin{equation}
+  I_y = 1.6 < I_x= 1.9, \ I_z = 2.0
+\end{equation}
+なので, 式(11)もみたしている. よって, 図3で得られた結果が示すように, x,z軸周りの回転も安定している.
+また, 式(10)を解くと, $\omega_x$と$\omega_z$が90度ずれた位相で振動することが導かれ, 結果もその
+ようになっている. \\
+もし, 条件(11)を満たさないとどのような姿勢運動を行うのか, 試してみることにした.
+$Ix = 1.9, I_y = 1.95, I_z = 2.0$としてプロットしてみたところ, 下図のようになった.
+この場合$a<0$になるので解が発散すると考えたが,発散はせず, $\omega$については3つの要素が同じ周期で,
+また$\omega_x$と$\omega_z$がほぼ同じ振幅で周期的に運動し,正負が同じになるときと逆になるときが
+交互に現れた.またquartanionについては4つの要素が2つセットで交互に振幅を変えながら振動するパターン
+が見られた. 発散しなかった理由としては, $\omega_x=0$ではないことから, 完全にyとx,zの運動を切り離す
+ことができなかったためであると考えた. いずれにせよ, single spin stabilizationにおいては,
+$I_x, I_y, I_z$の大小関係が運動を決定するのに重要な要素となることは言えそうである.
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=8cm]{../../../fig/R1omega2.png}
+  \caption{$I_y=1.95$とした場合の$\omega$の時間履歴}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=8cm]{../../../fig/R1qt2.png}
+  \caption{$I_y=1.95$とした場合のquartanionの時間履歴}
+\end{center}
+\end{figure}
+
+
+
+
+
+\end{document}
