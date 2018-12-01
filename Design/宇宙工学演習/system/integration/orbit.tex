@@ -1,0 +1,90 @@
+\section{ミッション概要}
+静止軌道の人工衛星を設計する
+
+\subsection{軌道}
+軌道傾斜角\ 0度 \par
+東経135度上空\ 静止軌道\ (半径42160kmの静止軌道)
+
+\subsection{寿命}
+7年
+
+\subsection{ミッション機器}
+図1-1参照。搭載面要求として、アンテナ、アンテナタワーは地球指向面上とする\par\medskip
+\begin{table}[H]
+  \caption{ミッション機器一覧}
+\begin{tabular}{|c|c|c|c|c|} \hline
+  \multicolumn{2}{|c|}{} & 重量[kg] & 使用電力[W] & 許容温度[℃] \\ \hline
+   & \o0.7m\ パラボラアンテナ(S バンド) & 5 & 0 & 10-40 \\ \cline{2-5}
+   \raisebox{.5\normalbaselineskip}[0pt][0pt]{uplink}
+   & \o1.5m\ パラボラアンテナ(Ka バンド) & 23 & 0 & 10-40 \\ \hline
+   & \o0.8m\ パラボラアンテナ(S バンド) & 6 & 0 & 10-40 \\ \cline{2-5}
+   \raisebox{.5\normalbaselineskip}[0pt][0pt]{downlink}
+   & \o1.6m\ パラボラアンテナ(Ka バンド) & 26 & 0 & 10-40 \\ \hline
+   \multicolumn{2}{|c|}{アンテナタワー} & 70 & 0 & -45-65 \\ \hline
+   \multicolumn{2}{|c|}{Kaバンド中継機($1380\times700\times200mm$)} & 180 & 867 & 5-40 \\ \hline
+   \multicolumn{2}{|c|}{Sバンド中継機($700\times700\times200mm$)} & 60 & 330 & 5-40 \\ \hline
+\end{tabular}\par\medskip
+\end{table}
+\newpage
+
+\section{$\Delta$Vの見積もり}
+\subsection{概要}
+種子島(緯度30度)から半径$R_{PO}=6600km$のパーキング軌道まで入れ、そこから半径$R_{GEO}=42160km$のGEOへの
+トランスファ軌道へ入れる。トランスファ軌道に入るところまではロケットの責任とする。
+アポジ点で衛星搭載のキックモーターをふかす際に必要な$\Delta$Vを見積もる。
+\subsection{アポジ点での$\Delta$V}
+以下近地点における諸元の添え字をPとし、遠地点における諸元の添え字をAとする。
+アポジ点でふかすキックモーターの$\Delta$Vを${\Delta}V_A$とし、GTOでの速度$V_{GTO}$を考える。
+ケプラー第二法則より、
+\begin{equation}
+  R_{GEO}V_{GTO_A}=R_{PO}V_{GTO_P}
+\end{equation}
+また、エネルギー保存則より、
+\begin{equation}
+  \frac{1}{2} V_{GTOA}^2 - \frac{\mu}{R_{GEO}}
+  =  \frac{1}{2} V_{GTOP}^2 - \frac{\mu}{R_{PO}}
+\end{equation}
+以上より,
+\begin{align*}
+  V_{GTOA} & = \sqrt{\frac{2\mu R_{PO}}{R_{GEO}(R_{PO}+R_{GEO})}} \\
+           & = \sqrt{\frac{2\times3.986\times10^{14}[m^3/s^2]\times6600\times10^3[m]}
+           {42160\times10^3[m]\times(6600\times10^3[m]+42160\times10^3[m])}} \\
+           & = 1599.83...[m/s] \\
+           & \approx 1599.8[m/s]
+\end{align*}
+となる。また、GEOでの速度$V_{GEO}$は、
+\begin{align*}
+  V_{GEO} &= \sqrt{\frac{\mu}{R_{GEO}}} \\
+          &= \sqrt{\frac{3.986\times10^14[m^3/s^2]}{42160\times10^3[m]}} \\
+          &= 3074.81...[m/s] \\
+          & \approx 3074.8[m/s]
+\end{align*}
+である。よって速度三角形より、
+\begin{equation}
+  {\Delta}V_A = \sqrt{V_{GEO}^2+V_{GTOA}^2-2V_{GEO}V_{GTOA}\cos{30^ \circ }}
+              = 1869.14[m/s]
+               \approx{1869.1}[m/s]
+\end{equation}
+となる。
+\subsection{軌道の維持に必要な$\Delta V$}
+次に軌道の維持に必要な$\Delta V_{orbit}$を求める。\par
+軌道面と月軌道、黄道のなす角をそれぞれ$\alpha$、$\gamma$とすると、月と太陽による軌道傾斜角
+方向のずれは、$i=0^{orbit}$の静止軌道上で、
+\begin{equation}
+  \begin{cases}
+    \Delta V_{MOON} = 102.67 \cos \alpha \sin \alpha [m/s \cdot year] \approx 36.93[m/s \cdot year] \\
+    \Delta V_{SUN} = 40.17 \cos \gamma \sin \gamma [m/s \cdot year] \approx 14.45[m/s \cdot year]
+  \end{cases}
+\end{equation}
+となる。また衛星は安定点である東経75度、225度に向かってドリフトしていく。今回の静止衛星は東経135度上に
+静止するので、東経75度に向かってドリフトする。これによるずれは、
+\begin{equation}
+\Delta V_D = 1.715 \sin \bigl\{ 2 \times (135-75)[^ \circ] \bigr\} \approx 1.485[m/s \cdot year]
+\end{equation}
+である。よって衛星に必要な南北、東西方向の$\Delta V_{orbit}$は、
+\begin{equation}
+  \begin{cases}
+    \Delta V_{NS} = 7[year] \times (\Delta V_{MOON} + \Delta V_{SUN}) \approx 359.7[m/s \cdot year] \\
+    \Delta V_{EW} = 7[year] \times \Delta V_D \approx 10.40[m/s \cdot year] \\
+  \end{cases}
+\end{equation}

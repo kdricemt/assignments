@@ -1,0 +1,30 @@
+%packages
+\usepackage{indentfirst}
+\usepackage{tabularx}
+\usepackage[hmargin=2cm,vmargin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage[dvipdfmx]{graphicx}
+  \graphicspath{{./image/}{../image/}}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{mathtools}
+\usepackage{subfiles}
+
+%add
+%\makeatletter
+%    \renewcommand{\theequation}{%
+%    \thesection.\arabic{equation}}
+%    \@addtoreset{equation}{section}
+%\makeatother
+
+% number equations only when they are referred to in the text
+%\mathtoolsset{showonlyrefs=true}
+
+%表,式,図の引用
+%http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/etc010.html
+\newcommand{\Tabref}[1]{表~\ref{#1}}
+\newcommand{\Equref}[1]{式~(\ref{#1})}
+\newcommand{\Figref}[1]{図~\ref{#1}}
+
+% Include \subsubsection in ToC
+\setcounter{tocdepth}{3}

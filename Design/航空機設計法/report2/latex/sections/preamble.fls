@@ -1,0 +1,7 @@
+PWD /Users/keidaiiiyama/Documents/[semester6]_3a/航空機設計法/report2/latex/sections
+INPUT /usr/local/texlive/2017basic/texmf.cnf
+INPUT /usr/local/texlive/2017basic/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2017basic/texmf.cnf
+INPUT /Users/keidaiiiyama/Library/texlive/2017basic/texmf-var/web2c/euptex/uplatex.fmt
+INPUT preamble.tex
+OUTPUT preamble.log

@@ -1,0 +1,101 @@
+\section{アポジモーター、軌道制御用の燃料燃料の推算}
+
+\subsection{仮定}
+\begin{enumerate}
+  \item 構造系質量は機器重量の総和の10\%とする。
+  \item 計装、配線重量は機器重量の総和の7\%とする。
+  \item システムマージンとして上記合計の7\%をとる。
+  \item 姿勢制御用$\Delta$Vは10m
+  \item 姿勢制御用$\Delta$Vマージンは5\%
+  \item Isp:起動姿勢制御用(ヒドラジン) 170s、アポジモーター(個体) 280s
+  \item タンク重量は燃料重量の10\%と仮定する。
+  \item マージン(2\%)も含めてGTO投入時の総重量を求める
+\end{enumerate}
+
+\subsection{ドライ重量の計算}
+ 仮定より、以下のようになる
+ \begin{align*}
+   タンク重量 & : W_T = 0.1W_{prop} \\
+   機器重量 & : W_E = 810[kg] + W_T \\
+   構造重量 & : W_S = 0.1W_E \\
+   計装 \cdot 配線重量 & : W_W = 0.07W_E \\
+   ドライ質量 & : W_D = 1.07(W_E + W_S + W_W) = 1.07 \times 1.17 W_E \\
+ \end{align*}
+
+ \subsection{燃料重量の計算}
+ 燃料重量を$M_{prop}$とすると
+ \begin{equation}
+   M_{prop} = M_{dry} \exp ( \Delta V/gIsp - 1)
+   \Leftrightarrow \Delta V = gIsp \ln{\frac{W_{dry} + W_{prop}}{W_{dry}}}
+ \end{equation}
+姿勢軌道制御用、アポジモーターとして必要な$\Delta V$をそれぞれ$\Delta V_{sk}、\Delta V_{ap}$
+とすると、1章より、
+\begin{equation}
+  \begin{cases}
+    \Delta V_{sk} = 1.05(\Delta V_{NS} + \Delta V_{ES} + 10[m/s]) = 399.06[m/s] \\
+    \Delta V_{ap} = 1869.1[m/s]
+  \end{cases}
+\end{equation}
+(1)より、
+\begin{equation}
+  \begin{cases}
+    M_{skfuel} = (W_D) \exp ( \Delta V_{sk}/gIspsk - 1) \\
+    M_{apfuel} = (W_D + M_opfuel)(\exp ( \Delta V_{ap}/gIspap - 1))
+  \end{cases}
+\end{equation}
+これを付録のプログラムを用いて数値計算すると
+\begin{equation}
+  \begin{cases}
+    M_{skfuel} = 338.48[kg] \\
+    M_{apfuel} = 1551.2[kg]
+  \end{cases}
+\end{equation}
+となる。
+
+\subsection{タンク重量 $\cdot$ 体積の計算}
+タンク重量$M_T$は仮定より、
+\begin{equation}
+  \begin{cases}
+    M_{T_{sk}} = 0.1M_{skfuel} = 33.85[kg] = 16.924 \times 2 \\
+    M_{T_{ap}} = 0.1M_{apfuel} = 155.12[kg]
+  \end{cases}
+\end{equation}
+ヒドラジンの密度$\rho_{sk}$と、個体燃料(過塩素酸アンモニウムと仮定)として、その
+密度$\rho_{ap}$は、
+\begin{equation}
+  \begin{cases}
+    rho_{sk} = 1011[kg/m^3] \\
+    rho_{ap} = 1950[kg/m^3]
+  \end{cases}
+\end{equation}
+である。それぞれのタンク体積Vは、
+\begin{equation}
+  \begin{cases}
+    V_{sk} = \frac{M_{skfuel}}{\rho sk} = \frac{338.48[kg]}{1011[kg/m^3]}
+     \approx 0.3348[m^3] \\
+     V_{ap} = \frac{M_{apfuel}}{\rho ap} = \frac{1551.2[kg]}{1950[kg/m^3]}
+      \approx 0.7955[m^3] \\
+  \end{cases}
+\end{equation}
+球形タンクの半径rは、
+\begin{equation}
+  \begin{cases}
+    r_{sk} > \sqrt[3]{\frac{3\frac{V_{sk}}{2}}{4\pi}} \approx 0.3419[m] \\
+    r_{ap} > \sqrt[3]{\frac{3V_{ap}}{4\pi}} \approx 0.5748[m^3]
+  \end{cases}
+\end{equation}
+を満たさなければならないから、
+\begin{equation}
+  \begin{cases}
+    r_{sk} = 35[cm] \\
+    r_{ap} = 58[cm]
+  \end{cases}
+\end{equation}
+
+\subsection{打ち上げ重量の計算}
+以上より打ち上げ重量$W_{pL}$は、
+\begin{align*}
+  W_{PL} & = 1.02(W_D + M_skfuel + M_apfuel) \\
+         & \approx 3203.1[kg]
+\end{align*}
+となる

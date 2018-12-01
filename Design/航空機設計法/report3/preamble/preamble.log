@@ -1,0 +1,861 @@
+This is e-upTeX, Version 3.14159265-p3.7.1-u1.22-161114-2.6 (utf8.uptex) (TeX Live 2017) (preloaded format=uplatex 2017.12.25)  24 JAN 2018 14:07
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**preamble.tex
+(./preamble.tex
+pLaTeX2e <2017/05/05u01> (based on LaTeX2e <2017-04-15>)
+Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
+
+./preamble.tex:8: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 \usepackage[utf8]{
+                      inputenc}^^I^^I^^I^^I%fonts
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:9: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 \usepackage[ipaex]{
+                       pxchfon}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:10: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 \usepackage{
+                 pifont}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:11: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 \usepackage{
+                 mathtools, amssymb, mathrsfs, bbm,nccmath}^^I%math
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:12: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 \usepackage{
+                 siunitx, physics}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:13: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \usepackage[table]{
+                        xcolor}^^I^^I^^I^^I%colors
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:14: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14 \usepackage{
+                 tabularx}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:15: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 \usepackage[dvipdfmx]{
+                           graphicx}^^I^^I^^I^^I^^I%figures
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:16: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \usepackage{
+                 subcaption, wrapfig}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:17: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \usepackage{
+                 tikz}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+./preamble.tex:18: Undefined control sequence.
+l.18 \usetikzlibrary
+                    {calc, patterns, decorations, angles, calendar, backgrou...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./preamble.tex:18: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \usetikzlibrary{c
+                      alc, patterns, decorations, angles, calendar, backgrou...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./preamble.tex:19: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \usepackage{
+                 tcolorbox}^^I^^I^^I^^I^^I%tables
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:20: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 \usepackage{
+                 longtable, float, multirow, array, listliketab, enumitem, t...
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:21: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 \usepackage{
+                 listings}^^I^^I^^I^^I^^I%listings
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:22: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \usepackage{
+                 comment}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:23: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 \usepackage{
+                 hyperref}^^I^^I^^I^^I^^I%URL, link
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:24: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.24 \usepackage{
+                 url}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:25: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.25 \usepackage{
+                 pxjahyper}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:26: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 \usepackage{
+                 overcite}^^I^^I^^I^^I^^I%setting of citation
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:27: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 \usepackage{
+                 pxrubrica}^^I^^I^^I^^I^^I%rubi
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:28: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 \usepackage{
+                 fancyhdr, lastpage}^^I^^I^^I%pagelayout
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:29: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.29 \usepackage{
+                 import, grffile}^^I^^I^^I%file management
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:30: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 \usepackage{
+                 standalone}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:31: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.31 \usepackage{
+                 bm}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:32: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 \usepackage{
+                 empheq}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:33: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.33 \usepackage{
+                 pdfpages}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./preamble.tex:34: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 \usepackage{
+                 multicol}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+./preamble.tex:36: Undefined control sequence.
+l.36 \sisetup
+             {%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./preamble.tex:44: Missing $ inserted.
+<inserted text> 
+                $
+l.44 ^^Ii
+         nter-unit-product = \ensuremath{\hspace{-1.5pt}\cdot\hspace{-1.5pt}},
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 44.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 44.
+./preamble.tex:44: Extra }, or forgotten $.
+\frac #1#2->{\begingroup #1\endgroup \over #2}
+                                              
+l.44 ^^Ii
+         nter-unit-product = \ensuremath{\hspace{-1.5pt}\cdot\hspace{-1.5pt}},
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+./preamble.tex:47: Extra }, or forgotten $.
+l.47 ^^I}
+         
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+./preamble.tex:48: Missing $ inserted.
+<inserted text> 
+                $
+l.48 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (39.44447pt too wide) in paragraph at lines 18--48
+[]\OT1/cmr/m/n/10 calc,
+ []
+
+
+Overfull \hbox (17.77782pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 pat-
+ []
+
+
+Overfull \hbox (24.52782pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 terns,
+ []
+
+
+Overfull \hbox (17.77779pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 dec-
+ []
+
+
+Overfull \hbox (8.33334pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 o-
+ []
+
+
+Overfull \hbox (12.25002pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 ra-
+ []
+
+
+Overfull \hbox (23.9445pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 tions,
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 an-
+ []
+
+
+Overfull \hbox (18.94447pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 gles,
+ []
+
+
+Overfull \hbox (15.55557pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 cal-
+ []
+
+
+Overfull \hbox (13.33334pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 en-
+ []
+
+
+Overfull \hbox (17.25005pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 dar,
+ []
+
+
+Overfull \hbox (23.33337pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 back-
+ []
+
+
+Overfull \hbox (37.30565pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 grounds,
+ []
+
+
+Overfull \hbox (23.38893pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 shad-
+ []
+
+
+Overfull \hbox (18.66669pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 ows,
+ []
+
+
+Overfull \hbox (41.11124pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 mindmap
+ []
+
+
+Overfull \hbox (30.00003pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 detect-
+ []
+
+
+Overfull \hbox (27.22227pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 inline-
+ []
+
+
+Overfull \hbox (27.22232pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 family
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (25.55563pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 math,
+ []
+
+
+Overfull \hbox (30.00003pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 detect-
+ []
+
+
+Overfull \hbox (28.33337pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 weight
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (20.58337pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 true,
+ []
+
+
+Overfull \hbox (30.00003pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 detect-
+ []
+
+
+Overfull \hbox (27.22227pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 inline-
+ []
+
+
+Overfull \hbox (28.33337pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 weight
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (25.55563pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 math,
+ []
+
+
+Overfull \hbox (39.44452pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 quotient-
+ []
+
+
+Overfull \hbox (23.61118pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 mode
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (19.75003pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 frac-
+ []
+
+
+Overfull \hbox (20.00006pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 tion,
+ []
+
+
+Overfull \hbox (36.9723pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 fraction-
+ []
+
+
+Overfull \hbox (35.83344pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 function
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (241.51295pt too wide) in paragraph at lines 18--48
+\OT1/cmr/m/n/10 ,$[]$ 
+ []
+
+./preamble.tex:55: Undefined control sequence.
+<argument> \mathindent 
+                       
+l.55 \setlength{\mathindent}{5zw}
+                                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./preamble.tex:55: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.55 \setlength{\mathindent}{5zw}
+                                 
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (26.28888pt too wide) in paragraph at lines 55--56
+[]\OT1/cmr/m/n/10 5zw 
+ []
+
+
+./preamble.tex:58: LaTeX Error: \citeform undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 \renewcommand{\citeform}
+                             [1]{[#1]}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./preamble.tex:61: Undefined control sequence.
+l.61 \mathtoolsset
+                  {showonlyrefs=true}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./preamble.tex:61: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61 \mathtoolsset{s
+                    howonlyrefs=true}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (90.34457pt too wide) in paragraph at lines 61--63
+[]\OT1/cmr/m/n/10 showonlyrefs=true 
+ []
+
+./preamble.tex:65: Undefined control sequence.
+l.65 \hypersetup
+                {%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./preamble.tex:66: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.66 ^^Ib
+         ookmarksnumbered = true,%
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (100.56688pt too wide) in paragraph at lines 66--75
+[]\OT1/cmr/m/n/10 bookmarksnumbered
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (103.50024pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 true,hidelinks,colorlinks
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (57.83347pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 true,linkcolor
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (58.94458pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 black,urlcolor
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (59.47234pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 cyan,citecolor
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (59.47235pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 black,filecolor
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (16.6667pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 ma-
+ []
+
+
+Overfull \hbox (74.2779pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 genta,setpagesize
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (22.00005pt too wide) in paragraph at lines 66--75
+\OT1/cmr/m/n/10 false, 
+ []
+
+./preamble.tex:76: Undefined control sequence.
+l.76 \pdfstringdefDisableCommands
+                                 {%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./preamble.tex:77: LaTeX Error: \bm undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.77 \renewcommand*{\bm}
+                        [1]{#1}%
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./preamble.tex:84: Undefined control sequence.
+l.84 \newcolumntype
+                   {C}{>{\centering\arraybackslash}X} %セル内で中央揃え
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./preamble.tex:84: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.84 \newcolumntype{C
+                     }{>{\centering\arraybackslash}X} %セル内で中央揃え
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./preamble.tex:84: Undefined control sequence.
+l.84 \newcolumntype{C}{>{\centering\arraybackslash
+                                                  }X} %セル内で中央揃え
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./preamble.tex:85: Undefined control sequence.
+l.85 \newcolumntype
+                   {R}{>{\raggedright\arraybackslash}X} %セル内で右揃え
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./preamble.tex:85: Undefined control sequence.
+l.85 ...olumntype{R}{>{\raggedright\arraybackslash
+                                                  }X} %セル内で右揃え
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./preamble.tex:86: Undefined control sequence.
+l.86 \newcolumntype
+                   {L}{>{\raggedleft\arraybackslash}X}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./preamble.tex:86: Undefined control sequence.
+l.86 ...columntype{L}{>{\raggedleft\arraybackslash
+                                                  }X}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+)
+! Emergency stop.
+<*> preamble.tex
+                
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 9 strings out of 493649
+ 94 string characters out of 6149067
+ 57393 words of memory out of 5000000
+ 3701 multiletter control sequences out of 15000+600000
+ 5975 words of font info for 31 fonts, out of 8000000 for 9000
+ 929 hyphenation exceptions out of 8191
+ 19i,1n,14p,108b,58s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.

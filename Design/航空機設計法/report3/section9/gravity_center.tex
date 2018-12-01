@@ -1,0 +1,38 @@
+\documentclass[class=article, crop=false, dvipdfmx, fleqn]{standalone}
+\input{../preamble/preamble}
+\begin{document}
+\section{重心位置の計算}
+原点は胴体軸上, 機首先端にとった. 各要素の重心位置と計算された重心は以下のようになった.
+空力中心位置が47.4[$\%$]位置にあるので, 重心位置と概ね一致する結果となった.
+主翼の重心は平均空力翼弦40[$\%$]位置, 胴体,乗務員,アイテム質量, 装備品の重心は客室長さの45[$\%$]位置,
+客の重心はホイール上面, 推進系統の重心は前面から85[$\%$]
+とした. またx座標は胴体長さ$L_f$によって無次元化されている.
+計算の結果, 重心位置は,
+\begin{equation}
+  \overline{x} = 100 \times 0.49 = 49[ft]
+\end{equation}
+となる.
+\begin{table}[H]
+  \begin{center}
+  \caption{重心位置諸元表}
+  \label{tab::gravity_center}
+  \begin{tabularx}{10cm}{CCCC}
+    \hline
+     &  & 重量 & 重心位置 \\
+     &  & w[Ib] & x[/Lf] \\ \hline
+  主翼 & $W_w$ & 157450 & 0.52 \\
+  胴体 & $W_{fus}$ & 18129 & 0.20 \\
+  前脚 & $W_{ng}$ & 4628 & 0.10 \\
+  後脚 & $W_{mg}$ & 34445 & 0.54 \\
+  推進系統 & $W_{p}$ & 60224 & 0.85 \\
+  ナセル & $W_{n}$ & 15862 & 0.85 \\
+  乗務員 & $W_{crew}$ & 3485 & 0.20 \\
+  アイテム質量 & $W_{op}$ & 17879 & 0.20 \\
+  装備品 & $W_{fix}$ & 71680 & 0.20 \\
+  その他 & $W_o$ & 4483 & 0.20 \\ \hline
+  計 & $W_{OE}$ & 399166 &  \\
+  重心 & & & 0.488 \\
+\end{tabularx}
+\end{center}
+\end{table}
+\end{document}

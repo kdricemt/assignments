@@ -1,0 +1,123 @@
+\documentclass[class=article, crop=false, dvipdfmx, fleqn]{standalone}
+\input{../preamble/preamble}
+\begin{document}
+\section{重量推算}
+\subsection{主翼重量}
+主翼重量$W_w$を考える. 終局荷重倍数$N_{ult}$と零燃料時の最大質量$W_{mzf}$及び
+50$\%$翼弦長での後退角$\Lambda_{1/2}$を,
+\begin{align}
+  N_{ult} &= 3.8 \\
+  W_{mzf} &= W_{OE} + W_{PL} = W_{TO} - W_{F} = 658000 [Ib] \\
+  \Lambda_{1/2} &= tan^{-1}
+  \biggl( \frac{\frac{b}{2}tan\Lambda + \frac{c_t}{4} + \frac{c_r}{4}}{\frac{b}{2}} \biggr)
+  = 27.4 [deg]
+\end{align}
+とする. また主翼濡れ面積を, キンク部分を考慮して,
+\begin{equation}
+  S_w = S * 1.2 = 11697 [ft^2]
+\end{equation}
+とすると,
+\begin{align}
+  \hspace{-5mm} W_w &= 0.0017 \times W_{mzf} {\biggl( \frac{b}{cos\Lambda_{1/2}} \biggr)}^{0.75}
+  \biggl \{ 1 + {\biggl( \frac{6.25}{b}cos\Lambda_{1/2} \biggr)}^{0.5}\biggr \}
+  {N_{ult}}^{0.55} { \biggl( \frac{bS_w}{t_{root}c_rW_{mzf}cos\Lambda_{1/2}}\biggr)}^{0.30} \\
+  &= 157450 [Ib]
+\end{align}
+となる.
+
+\subsection{尾翼重量}
+今回は尾翼を考えないので, 省略する.
+
+\subsection{胴体質量}
+胴体濡れ面積は, 胴体を高さ12.2[ft],幅65.5[ft],長さ45[ft]の角柱と近似する(第4章参照)ことにより,
+\begin{equation}
+  S_{fus} \approx  2 * (12.2 \times 65.5  + 12.2 \times 45 + 65.5 \times 45)= 8591 [ft^2]
+\end{equation}
+また, 設計急降下速度$V_d$は,
+\begin{equation}
+  V_d = (0.80 + 0.05) \times 0.867 \times 111 = 822[ft/s]
+\end{equation}
+となる. 以上から$W_{fus}$は,
+\begin{equation}
+  W_{fus} = 0.0065 \times V_d^{0.5} \times 1.85 \times {S_{fus}}^{1.2}
+  = 18129 [Ib]
+\end{equation}
+ただし体積計算にあたっては胴体の最大幅, 最大高さの値で計算したので、実際にはより
+小さくなると考えられる.
+
+\subsection{ナセル重量}
+今回採用したエンジンは高バイパス比エンジンなので,
+\begin{equation}
+  F_{nacelle} = 0.065
+\end{equation}
+ここで, 第二回レポートより
+\begin{equation}
+  T_{TO} = 244044 [Ib]
+\end{equation}
+であるから,ナセル重量$W_n$は,
+\begin{equation}
+  W_n = F_{nacelle}T_{TO} = 15862 [Ib]
+\end{equation}
+
+\subsection{脚重量}
+今回は低翼機として,
+\begin{equation}
+  K_{gr} = 1.0
+\end{equation}
+とすると、
+\begin{align}
+  W_{mg} &= K_{gr}(40.0 + 0.16 {W_{TO}}^{0.75} + 0.019W_{TO} + 1.5 \times 10^{-5}{W_{TO}}^{1.5})
+  = 34445 [Ib]\\
+  W_{ng} &= K_{gr}(20.0 + 0.10 {W_{TO}}^{0.75} + 2.0 \times 10^{-6}{W_{TO}}^{1.5})
+  = 4628 [Ib]
+\end{align}
+より,
+\begin{equation}
+  W_g = W_{mg} + W_{ng} = 39074 [Ib]
+\end{equation}
+
+\subsection{推進系統重量}
+エンジンは第4章を参考にして,
+\begin{equation}
+  W_{eng} = 15596 \times 3 = 46788 [Ib]
+\end{equation}
+となる.よって, 教科書(9.11)式より,
+\begin{equation}
+  W_P = 1.16W_{eng} + 5950 = 60224 [Ib]
+\end{equation}
+
+\subsection{装備品重量}
+遠距離機体なので,
+\begin{equation}
+  F_{fix} = 0.08
+\end{equation}
+とすると, 装備重量$W_{fix}$は,
+\begin{equation}
+  W_{fix} = F_{fix}W_{TO} = 71680 [Ib]
+\end{equation}
+となる.
+
+\subsection{運用に必要なアイテム重量}
+長距離路線なので, $F_{OP} = 35$として, 装備重量$W_{OP}$は,
+\begin{equation}
+  W_{OP} = 187N_{crew} + F_{OP}P = 187 \times 17 + 35 \times 420 = 17879 [Ib]
+\end{equation}
+となる.
+
+\subsection{運用空虚重量}
+以上を合計し, $W_{tfo}$は最大離陸重量の$0.5\%$として,
+\begin{align}
+  W_{ME} &= W_w + W_{fus} + W_{n} + W_{g} \\
+  W_{OE} &= W_{ME} + W_p + W_{fix} + W_{tfo} + W_{crew} + W_{OP} = 388265 [Ib]
+\end{align}
+となった.レポート2での計算の結果は,
+\begin{equation}
+  W_{OE} = 497787 [Ibs]
+\end{equation}
+であったから, かなりの誤差が生じてしまっているが, BWB機に特化した統計データがなく
+胴体や主翼の計算が精度を欠いていることを考えると, 今後のさらに詳細なサイジングにより, この差を
+埋めていくものとする.
+
+
+
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass[class=article, crop=false, dvipdfmx, fleqn]{standalone}
+\input{../preamble/preamble}
+\begin{document}
+\section{タイヤのサイジング}
+レポート問題2より,
+\begin{equation}
+  W_{TO} = 896000 [Ibs]
+\end{equation}
+である. 前輪は4輪, 後輪は片側4輪計8輪とし、全機重量で前輪で15$\%$,後輪で85$\%$
+支えると, 前輪後輪でタイヤ一つが支える重量$W_{NW},W_{MW}$は,
+\begin{align}
+  W_{NW} = \frac{0.15W_{TO}}{4} = 33600 [Ib] \\
+  W_{MW} = \frac{0.85W_{TO}}{8} = 95200 [Ib]
+\end{align}
+となる. 配布資料から,
+\begin{align}
+  \text{Main Wheel Diameter} &= 1.63 \times {W_{MW}}^{0.315} = 60.32[in] = 5.02[ft] \\
+  \text{Main Wheel WIdth} &= 0.1043 \times {W_{MW}}^{0.480} = 25.55[in] = 2.13[ft]
+\end{align}
+とする.前輪については後輪の70$\%$のサイズとし,
+\begin{align}
+  \text{Nose Wheel Diameter} = 3.52 [ft] \\
+  \text{Nose Wheel Width} = 1.49 [ft]
+\end{align}
+とする.
+
+\end{document}

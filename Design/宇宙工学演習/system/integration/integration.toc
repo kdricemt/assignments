@@ -1,0 +1,41 @@
+\contentsline {section}{\numberline {1}ミッション概要}{2}
+\contentsline {subsection}{\numberline {1.1}軌道}{2}
+\contentsline {subsection}{\numberline {1.2}寿命}{2}
+\contentsline {subsection}{\numberline {1.3}ミッション機器}{2}
+\contentsline {section}{\numberline {2}$\Delta $Vの見積もり}{3}
+\contentsline {subsection}{\numberline {2.1}概要}{3}
+\contentsline {subsection}{\numberline {2.2}アポジ点での$\Delta $V}{3}
+\contentsline {subsection}{\numberline {2.3}軌道の維持に必要な$\Delta V$}{3}
+\contentsline {section}{\numberline {3}熱入力量と放射能力の計算}{5}
+\contentsline {subsection}{\numberline {3.1}面の定義}{5}
+\contentsline {subsection}{\numberline {3.2}仮定}{5}
+\contentsline {subsection}{\numberline {3.3}各面の太陽輻射による熱入量}{5}
+\contentsline {subsection}{\numberline {3.4}各面の放射能力の計算}{7}
+\contentsline {section}{\numberline {4}サブシステムの洗い出し}{8}
+\contentsline {section}{\numberline {5}アポジモーター、軌道制御用の燃料燃料の推算}{9}
+\contentsline {subsection}{\numberline {5.1}仮定}{9}
+\contentsline {subsection}{\numberline {5.2}ドライ重量の計算}{9}
+\contentsline {subsection}{\numberline {5.3}燃料重量の計算}{9}
+\contentsline {subsection}{\numberline {5.4}タンク重量 $\cdot $ 体積の計算}{10}
+\contentsline {subsection}{\numberline {5.5}打ち上げ重量の計算}{10}
+\contentsline {section}{\numberline {6}機器配置 $\cdot $ 放熱面の決定}{11}
+\contentsline {subsection}{\numberline {6.1}仮定}{11}
+\contentsline {subsection}{\numberline {6.2}機器配置図 $\cdot $ 搭載機器表 $\cdot $ 重心、重量表}{12}
+\contentsline {subsection}{\numberline {6.3}重心の位置}{16}
+\contentsline {subsection}{\numberline {6.4}熱計算と放熱面の設計}{16}
+\contentsline {subsubsection}{\numberline {6.4.1}空間1}{16}
+\contentsline {subsubsection}{\numberline {6.4.2}空間２}{17}
+\contentsline {subsubsection}{\numberline {6.4.3}空間３}{17}
+\contentsline {subsubsection}{\numberline {6.4.4}空間４}{18}
+\contentsline {subsubsection}{\numberline {6.4.5}空間$1 \sim 4$の平衡温度}{18}
+\contentsline {section}{\numberline {7}ロケットサイジング}{19}
+\contentsline {subsection}{\numberline {7.1}フェアリング重量の推算}{19}
+\contentsline {subsection}{\numberline {7.2}必要$\Delta V$の計算}{19}
+\contentsline {subsubsection}{\numberline {7.2.1}$V_{CE}$}{19}
+\contentsline {subsubsection}{\numberline {7.2.2}$\Delta V_H$}{19}
+\contentsline {subsubsection}{\numberline {7.2.3}$\Delta V_g$と$\Delta V_A$}{20}
+\contentsline {subsubsection}{\numberline {7.2.4}$\Delta V_E$}{20}
+\contentsline {subsubsection}{\numberline {7.2.5}$\Delta V_{PK}$}{20}
+\contentsline {subsection}{\numberline {7.3}$\Delta V$の合計}{20}
+\contentsline {subsection}{\numberline {7.4}1・2段ロケットの推進薬の決定}{20}
+\contentsline {subsection}{\numberline {7.5}燃料のトータル重量の最適化}{21}

@@ -1,0 +1,68 @@
+\documentclass[15pt,uplatex,dvipdfmx]{jsarticle}
+\usepackage{indentfirst}
+\usepackage{tabularx}
+\usepackage[hmargin=2cm,vmargin=2cm]{geometry}
+\usepackage{amsmath}
+
+%%% tabularx環境用マクロ
+%%セル内で中央揃えをする。
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+%%セル内で右揃え。
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+%%セル内で左揃え。
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
+
+\begin{document}
+\setcounter{section}{4}
+\section{衛星寸法の決定}
+
+\subsection{仮定}
+\begin{enumerate}
+  \item 実装効率は50\%以下とする
+  \item アポジモーターはスラストチューブ内部に配置する
+  \item ヒドラジンタンクはバルクヘッド中央に配置する
+\end{enumerate}
+
+\subsection{構造内部の機器の体積と衛星体積の概算}
+構造内部の機器の体積は、下表のようになる\par
+\setlength{\parskip}{1.0\baselineskip}
+
+\setlength{\tabcolsep}{.5zw}
+\begin{tabularx}{40zw}{|C|C C C|} \hline
+  機器名 & 寸法[cm] & 数量 & $体積[cm^3]$ \\ \hline
+  Kaバンド中継機 & $138 \times 70 \times 20$ & 1 & 193,200 \\
+  Sバンド中継機 & $70 \times 70 \times 20$ & 1 & 98,000 \\
+  IRU & $30 \times 38 \times 30$ & 1 & 34,200 \\
+  AOCE & $20 \times 15 \times 7$ & 1 & 2,100 \\
+  リアクションリアクションホイール & $30 \times 30 \times 10$ & 1 & 9,000 \\
+  TT \& Cユニット & $80 \times 60 \times 20$ & 1 & 96,000 \\
+  オンボード計算機 & $40 \times 26 \times 12$ & 1 & 12,480 \\
+  パドル駆動モータ & $19 \times 20 \times 34$ & 2 & 25,840 \\
+  バッテリ & $35 \times 25 \times 20$ & 2 & 35,000 \\
+  電源制御部 & $20 \times 30 \times 20$ & 2 & 24,000 \\
+  ヒドラジンタンク & r=35(球) & 2 & 359,189 \\
+  アポジタンク & r=58(球) & 1 & 817,283 \\ \hline
+  \multicolumn{3}{|c}{合計} & 1,706,292 \\ \hline
+\end{tabularx} \par
+したがって衛星体積の最小値$V_{min}$は、
+\begin{equation}
+  V_{min} = \frac{1706292}{0.5} = 3412584[cm^3]
+\end{equation}
+となるため、一辺の長さはおよそ
+\begin{equation}
+  a = sqrt[3]{3412584} \approx 150[cm]
+\end{equation}
+となる
+
+\subsection{衛星寸法の決定$\cdot$搭載面積の確認}
+円形のフェアリングに収容することを考え、$\pm$TAR面は正方形として設計した。
+ヒドラジンタンクをバルクヘッド中央、アポジタンクをスラストチューブ内に配置する関係から、
+一辺の長さdは、
+\begin{equation}
+  d > 2(2r_{sk} + r_{ap}) = 2(2 \times 35[cm] + 58[cm]) = 256[cm]
+\end{equation}
+を必ず満たさなくてはならない。中継機を(水平方向)中央付近に配置することを考え,
+d=320[cm]とし、また中継機の高さを考えて、h=150[cm]とした。
+5-1より、これは条件を満たすと考えられる。
+
+\end{document}

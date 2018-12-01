@@ -1,0 +1,227 @@
+\documentclass[15pt,uplatex,dvipdfmx]{jsarticle}
+\usepackage{indentfirst}
+\usepackage{tabularx}
+\usepackage[hmargin=2cm,vmargin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage[dvips]{graphicx}
+\usepackage{listings}
+\usepackage{float}
+
+%%% tabularx環境用マクロ
+%%セル内で中央揃えをする。
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+%%セル内で右揃え。
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+%%セル内で左揃え。
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
+
+\begin{document}
+\setcounter{section}{1}
+
+\section{熱入力量と放射能力の計算}
+\subsection{面の定義}
+面については以下のネーミングを与える\par
+\setlength{\parskip}{1.0\baselineskip}
+
+\setlength{\tabcolsep}{.5zw}
+\begin{table}[H]
+\begin{tabularx}{40zw}{C|C C} \hline
+   & 正 & 逆 \\ \hline
+  地球指向面 & +TAR & -TAR \\ \hline
+  北面(パドルついている) & +PAD & -PAD \\ \hline
+  速度ベクトルに平行な面 & +SUN & -SUN \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsection{仮定}
+\setlength{\parskip}{0\baselineskip}
+\begin{enumerate}
+  \item 太陽定数$P_S = 1358[W/m^2]$とする
+  \item 地球からの輻射、アルベドは考慮しない
+  \item 太陽の食は考慮しない
+  \item 表面素材はA1テフロン$(\alpha _s = 0.2, \epsilon = 0.8)$とし、表面温度は$20[^ \circ C]$
+  と仮定する
+  \item $\pm$ PAD面では太陽電池パネル、+TAR面ではパドルやアンテナによる放熱障害でそれぞれ10 \%
+  放射能力が減るとする
+\end{enumerate}
+
+\subsection{各面の太陽輻射による熱入量}
+\setlength{\parskip}{0\baselineskip}
+衛星の６面における太陽輻射による平均熱入量$q_s$を、夏至で北面最悪時である軌道面と太陽のなす角$\beta = 23.4 ^ \circ$
+の時と、春秋分時である$\beta = 0 ^ \circ$の時において計算する。計算には下記のコードを用いた。結果は下記
+の表のようになる。\par
+\setlength{\parskip}{1.0\baselineskip}
+
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize, frame=single]
+
+import math
+import matplotlib.pyplot as plt
+
+p_s = 1358
+alpha_s = 0.2
+rad = math.pi/180
+
+#stephan_boltzman_constant
+sigma = 5.67 * math.pow(10,-8)
+temp_wall = 20 + 273.15
+epsilon = 0.8
+default_ratio = 1
+pad_ratio = 0.9
+tar_p_ratio = 0.9
+beta_sum = 23.4
+beta_spr = 0
+dalpha = 0.1 #積分用
+alpha = 0
+
+q_tarp = 0
+q_tarm = 0
+q_sunp = 0
+q_sunm = 0
+q_padp = 0
+q_padm = 0
+
+def init_parameter():
+    global alpha,q_tarp,q_tarm,q_sunp,q_sunm,q_padp,q_padm
+    alpha = 0
+    q_tarp = 0
+    q_tarm = 0
+    q_sunp = 0
+    q_sunm = 0
+    q_padp = 0
+    q_padm = 0
+
+def cal_radiation(beta):
+    global alpha,q_tarp,q_tarm,q_sunp,q_sunm,\
+    q_padp,q_padm,dalpha
+
+    while alpha < 360:
+        q_tarp += max(0,-math.cos(alpha*rad) * dalpha)
+        q_tarm += max(0,math.cos(alpha*rad) * dalpha)
+        q_sunp += max(0,math.sin(alpha*rad) * dalpha)
+        q_sunm += max(0, -math.sin(alpha*rad) * dalpha)
+        q_padp += max(0,1 * dalpha)
+        q_padm += max(0,0 * dalpha)
+        alpha += dalpha
+
+    #係数をかける
+    q_tarp *= alpha_s * p_s * math.cos(beta*rad)
+    q_tarm *= alpha_s * p_s * math.cos(beta*rad)
+    q_sunp *= alpha_s * p_s * math.cos(beta*rad)
+    q_sunm *= alpha_s * p_s * math.cos(beta*rad)
+    q_padp *= alpha_s * p_s * math.sin(beta*rad)
+    q_padm *= alpha_s * p_s * math.sin(beta*rad)
+
+    #一周の平均
+    q_tarp *= 1/360.0
+    q_tarm *= 1/360.0
+    q_sunp *= 1/360.0
+    q_sunm *= 1/360.0
+    q_padp *= 1/360.0
+    q_padm *= 1/360.0
+
+    #放射能力
+    global epsilon,tar_p_ratio,pad_ratio,default_ratio
+
+    c1 =  epsilon * sigma * math.pow(temp_wall,4)
+    p_tarp = c1 * tar_p_ratio - q_tarp
+    p_tarm = c1 * default_ratio - q_tarm
+    p_sunp = c1 * default_ratio - q_sunp
+    p_sunm = c1 * default_ratio - q_sunm
+    p_padp = c1 * pad_ratio - q_padp
+    p_padm = c1 * pad_ratio - q_padm
+
+    print("beta",beta)
+
+    print("q_tarp",q_tarp)
+    print("q_tarm",q_tarm)
+    print("q_sunp",q_sunp)
+    print("q_sunm",q_sunm)
+    print("q_padp",q_padp)
+    print("q_padm",q_padm)
+
+    print("p_tarp",p_tarp)
+    print("p_tarm",p_tarm)
+    print("p_sunp",p_sunp)
+    print("p_sunm",p_sunm)
+    print("p_padp",p_padp)
+    print("p_padm",p_padm)
+    print("\n")
+
+if __name__ == "__main__":
+    init_parameter()
+    cal_radiation(beta_sum)
+    init_parameter()
+    cal_radiation(beta_spr)
+
+\end{lstlisting}
+
+\setlength{\tabcolsep}{.5zw}
+\begin{tabularx}{40zw}{C|C C} \hline
+  軌道面と太陽のなす角$\beta[^ \circ]$ & 0 & 23.4 \\ \hline
+  +TAR[W/$m^2$] & 86.45 & 79.34 \\ \hline
+  -TAR[W/$m^2$] & 86.45 & 79.34 \\ \hline
+  +SUN[W/$m^2$] & 86.45 & 79.34 \\ \hline
+  -SUN[W/$m^2$] & 86.45 & 79.34 \\ \hline
+  +PAD[W/$m^2$] & 0 & 107.87 \\ \hline
+  -PAD[W/$m^2$] & 0 & 0 \\ \hline
+\end{tabularx}\par
+
+\subsection{各面の放射能力の計算}
+\setlength{\parskip}{0\baselineskip}
+放射能力$P_{RAD}$は、衛星の各面の放熱量ー外部からの入熱量であるから、
+\begin{equation}
+  P_{RAD} = \epsilon \sigma T_{WALL}^4 F - q_s
+\end{equation}
+となる。計算には2.3と同じコードを用いた。結果は下記の表のようになる。\par
+\setlength{\parskip}{1.0\baselineskip}
+
+\setlength{\tabcolsep}{.5zw}
+\begin{tabularx}{40zw}{C|C C} \hline
+  $\beta[^ \circ]$ & 0 & 23.4 \\ \hline
+  +TAR[W/$m^2$] & 215.0 & 222.15 \\ \hline
+  -TAR[W/$m^2$] & 248.5 & 255.65 \\ \hline
+  +SUN[W/$m^2$] & 248.5 & 255.65 \\ \hline
+  -SUN[W/$m^2$] & 248.5 & 255.65\\ \hline
+  +PAD[W/$m^2$] & 301.5 & 193.6 \\ \hline
+  -PAD[W/$m^2$] & 301.5 & 301.5 \\ \hline
+\end{tabularx}\par
+
+\section{サブシステムの洗い出し}
+\setlength{\parskip}{0\baselineskip}
+サブシステム一覧と消費電力は下記の表の通り\par
+\setlength{\parskip}{1.0\baselineskip}
+
+\setlength{\tabcolsep}{.5zw}
+\begin{tabularx}{55zw}{c|c c c C C C c } \hline
+  & 機器名 & 寸法[cm] & 重量[kg] & 消費電力[W] & 発熱量[W] & 許容温度$[^ \circ C]$ & 搭載面要求\\ \hline
+  & \shortstack{uplinkパラボラアンテナ \\ (Sバンド)} & \o 70 & 5 & 0 & 0 & 10-40 & +TAR外\\ \cline{2-8}
+  & \shortstack{uplinkパラボラアンテナ \\ (Kaバンド)} & \o 150 & 23 & 0 & 0 & 10-40 & +TAR外\\ \cline{2-8}
+  & \shortstack{downlinkパラボラアンテナ \\ (Sバンド)} & \o 80 & 6 & 0 & 0 & 10-40 & +TAR外\\ \cline{2-8}
+  & \shortstack{downlinkパラボラアンテナ \\ (Kaバンド)} & \o 160 & 26 & 0 & 0 & 10-40 & +TAR外\\ \cline{2-8}
+  \raisebox{2.5\normalbaselineskip}[0pt][0pt]{ミッション機器}
+  & アンテナタワー & & 70 & 0 & 0 & -45-65 & +TAR外\\ \cline{2-8}
+  & Kaバンド中継機 & $138 \times 70 \times 20$ & 180 & 867 & 694 & 5-40 & \\ \cline{2-8}
+  & Sバンド中継機 & $70 \times 70 \times 70$ & 60 & 330 & 264 & 5-40 & \\ \hline
+
+  & アースセンサ & $12 \times 17 \times 13$ & 25 & 6 & 6 & 0-50 & +TAR外\\ \cline{2-8}
+  & $サンセンサ \times 2$ & $12 \times 43 \times 13$ & $4.5 \times 2$ & $6 \times 2$
+  & $6 \times 2$ & 0-50 & $\pm$ SUN外\\ \cline{2-8}
+  & IRU & $30 \times 38 \times 30$ & 22 & 10 & 10 & 0-40 & \\ \cline{2-8}
+  & AOCE & $20 \times 15 \times 7$ & 10 & 50 & 50 & -5-40 & \\ \cline{2-8}
+  & リアクションホイール & $30 \times 30 \times 10$ & 24 & 60 & 60 & 0-45 & \\ \cline{2-8}
+  & TT\&Cユニット & $80 \times 60 \times 20$ & 60 & 35 & 35 & 0-50 & \\ \cline{2-8}
+  & オンボード計算機 & $40 \times 26 \times 12$ & 20 & 120 & 120 & -5~40 & \\ \cline{2-8}
+  \raisebox{.5\normalbaselineskip}[0pt][0pt]{バス機器}
+  & ヒドラジンスラスタ$\times 2$ &  & $10 \times 2$ &  &  & 9-40 & $\pm$SUN外 \\ \cline{2-8}
+  & 太陽電池パドル$\times 2$ &  & $77 \times 2$ &  &  &  & $\pm$PAD外 \\ \cline{2-8}
+  & パドル駆動モータ$\times 2$ & $19 \times 20 \times 34$ & $13 \times 2$ & $10 \times 2$ & $10 \times 2$ & 0-40 & $\pm$PAD \\ \cline{2-8}
+  & バッテリ$\times 2$ & $35 \times 25 \times 20$ & $25 \times 2$ &  & $117 \times 2$ & 5-20 &  \\ \cline{2-8}
+  & 電源制御部$\times 2$ & $20 \times 30 \times 20$ & $10 \times 2$ & $25 \times 2$ & $25 \times 2$ & 0-40 & \\ \hline
+
+  & ヒドラジンタンク$\times 2$ & r=35(球) & $16.92 \times 2$ & 0 & 0 & 9-40 & バルクヘッド \\ \cline{2-8}
+  \raisebox{.5\normalbaselineskip}[0pt][0pt]{タンク系}
+  & アポジタンク & r=58(球) & 155.1 & 0 & 0 & 9-40 & スラストチューブ \\ \hline
+
+\end{tabularx}
+
+\end{document}
